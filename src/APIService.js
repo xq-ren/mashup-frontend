@@ -6,13 +6,14 @@ class APIService {
     getZrhDepFlight(){
         return fetch(FLIGHTS_DEPZRH_REST_API,{ 
             method: 'get',
+            mode:'no-cors',
                 headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json',
                 },
                 'credentials': 'same-origin'
         })
-        .then(res => res.json());        
+        .then(res => res.json());      
     }
 
     getZrhArrFlight(){

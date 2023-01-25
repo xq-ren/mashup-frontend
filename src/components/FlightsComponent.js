@@ -36,10 +36,11 @@ export default class FlightsComponent extends React.Component {
                     </thead>
                     <tbody>
                         {
+                            //nice, aight it gives you errors with line 40 here.
+                            //backend is already connected with frontend, it just doesnt give you any data for some reason, idk - im backend dev :)
                             this.state.flights.map(flights =>
                                     <tr key={flights.iataCode}>
                                         <td>{flights.depIata}</td>
-                                        <td>{flights.arrIata}</td>
                                         <td>{flights.status}</td>
                                     </tr>
                             )
