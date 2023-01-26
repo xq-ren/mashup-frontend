@@ -7,13 +7,13 @@ export default class FlightsComponent extends React.Component {
         super(props)
     
         this.state = {
-             flights: []
+             flight: []
         }
     }
     
     componentDidMount(){
         APIService.getZrhDepFlight().then((data) => {
-            this.setState({ flights: data })
+            this.setState({ flight: data })
             console.log(this.state.data)
           })
           .catch(function (ex) {
@@ -28,19 +28,25 @@ export default class FlightsComponent extends React.Component {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>Aircraft IATA Code</th>
+                            <th>Departure Aircraft IATA Code</th>
                             <th>Flight Departure IATA</th>
+                            <th>Flight Status</th>
+
+                            <th>Arrival Aircraft IATA Code</th>
                             <th>Flight Arrival IATA</th>
                             <th>Flight Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            //nice, aight it gives you errors with line 40 here.
-                            //backend is already connected with frontend, it just doesnt give you any data for some reason, idk - im backend dev :)
-                            this.state.flights.map(flights =>
-                                    <tr key={flights.iataCode}>
+                            this.state.flight.map((flights) =>
+                                    <tr key={flights.id}>
+                                        <td>{flights.iataCodeDep}</td>
                                         <td>{flights.depIata}</td>
+                                        <td>{flights.status}</td>
+
+                                        <td>{flights.iataCodeArr}</td>
+                                        <td>{flights.arrIata}</td>
                                         <td>{flights.status}</td>
                                     </tr>
                             )
