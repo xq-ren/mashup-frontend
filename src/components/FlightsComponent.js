@@ -57,3 +57,4 @@ export default class FlightsComponent extends React.Component {
         )
     }
 }
+
